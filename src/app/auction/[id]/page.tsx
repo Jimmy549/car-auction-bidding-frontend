@@ -92,7 +92,7 @@ export default function AuctionDetailPage() {
   }
 
   const auction = currentAuction;
-  const isOwner = user && auction.seller._id === user.id;
+  const isOwner = user && auction.seller._id === user.id ? true : false;
   const isLive = auction.status === 'live';
   const isEnded = auction.status === 'ended';
   const hasWinner = isEnded && auction.highestBid;

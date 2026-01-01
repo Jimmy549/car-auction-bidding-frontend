@@ -3,7 +3,11 @@ import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
 
-export function AuctionFilters() {
+interface AuctionFiltersProps {
+  onFiltersChange?: (filters: any) => void;
+}
+
+export function AuctionFilters({ onFiltersChange }: AuctionFiltersProps) {
   return (
     <Card className="p-6">
       <div className="flex items-center justify-between mb-6">

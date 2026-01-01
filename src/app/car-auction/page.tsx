@@ -32,9 +32,9 @@ export default function CarAuctionPage() {
     sortBy: 'relevance'
   });
   
-  const [categories, setCategories] = useState([]);
-  const [makes, setMakes] = useState([]);
-  const [filteredAuctions, setFilteredAuctions] = useState([]);
+  const [categories, setCategories] = useState<any[]>([]);
+  const [makes, setMakes] = useState<string[]>([]);
+  const [filteredAuctions, setFilteredAuctions] = useState<any[]>([]);
   const [priceRange, setPriceRange] = useState([50000]);
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export default function CarAuctionPage() {
   const fetchMakes = async () => {
     try {
       const response = await apiService.cars.getAll();
-      const uniqueMakes = [...new Set(response.map(car => car.make))];
+      const uniqueMakes = [...new Set(response.map((car: any) => car.make))];
       setMakes(uniqueMakes);
     } catch (error) {
       console.error('Failed to fetch makes:', error);
@@ -77,39 +77,39 @@ export default function CarAuctionPage() {
 
     if (filters.carType && filters.carType !== 'all') {
       filtered = filtered.filter(auction => 
-        auction.car?.category?.toLowerCase().includes(filters.carType.toLowerCase())
+        (auction as any).car?.category?.toLowerCase().includes(filters.carType.toLowerCase())
       );
     }
 
     if (filters.color && filters.color !== 'all') {
       filtered = filtered.filter(auction => 
-        auction.car?.color?.toLowerCase() === filters.color.toLowerCase()
+        (auction as any).car?.color?.toLowerCase() === filters.color.toLowerCase()
       );
     }
 
     if (filters.make && filters.make !== 'all') {
       filtered = filtered.filter(auction => 
-        auction.car?.make?.toLowerCase() === filters.make.toLowerCase()
+        (auction as any).car?.make?.toLowerCase() === filters.make.toLowerCase()
       );
     }
 
     filtered = filtered.filter(auction => 
-      auction.currentPrice >= filters.minPrice && 
-      auction.currentPrice <= filters.maxPrice
+      (auction as any).currentPrice >= filters.minPrice && 
+      (auction as any).currentPrice <= filters.maxPrice
     );
 
     switch (filters.sortBy) {
       case 'price-low':
-        filtered.sort((a, b) => a.currentPrice - b.currentPrice);
+        filtered.sort((a, b) => (a as any).currentPrice - (b as any).currentPrice);
         break;
       case 'price-high':
-        filtered.sort((a, b) => b.currentPrice - a.currentPrice);
+        filtered.sort((a, b) => (b as any).currentPrice - (a as any).currentPrice);
         break;
       case 'newest':
-        filtered.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+        filtered.sort((a, b) => new Date((b as any).createdAt).getTime() - new Date((a as any).createdAt).getTime());
         break;
       case 'ending-soon':
-        filtered.sort((a, b) => new Date(a.endTime).getTime() - new Date(b.endTime).getTime());
+        filtered.sort((a, b) => new Date((a as any).endTime).getTime() - new Date((b as any).endTime).getTime());
         break;
     }
 

@@ -70,7 +70,7 @@ export const fetchAuctions = createAsyncThunk(
   async (filters?: { status?: string; minPrice?: number; maxPrice?: number; search?: string }) => {
     const response = await apiService.auctions.getAll(filters);
     // Backend now returns { data: [], pagination: {} } format
-    return response.data || response;
+    return (response as any).data || response;
   }
 );
 

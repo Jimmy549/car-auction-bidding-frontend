@@ -38,26 +38,29 @@ export default function PaymentPage() {
 
   const paymentSteps = [
     {
+      id: 1,
       date: "14/03/2022",
       time: "06:00pm",
       amount: "$60,000",
-      id: "279831",
+      bidNumber: "279831",
       status: "completed" as const,
       label: "Ready For Shipping",
     },
     {
+      id: 2,
       date: "21/04/2022",
       time: "06:00pm",
       amount: "$60,000",
-      id: "279831",
+      bidNumber: "279831",
       status: "current" as const,
       label: "Ready For Shipping",
     },
     {
+      id: 3,
       date: "15/03/2022",
       time: "06:00pm",
       amount: "$60,000",
-      id: "279831",
+      bidNumber: "279831",
       status: "pending" as const,
       label: "Delivered",
     },
