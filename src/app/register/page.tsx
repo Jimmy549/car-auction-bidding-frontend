@@ -328,7 +328,7 @@ export default function RegisterPage() {
                       mobileNumber: mobileWithCode,
                     };
                     const resp = await fetch(
-                      `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4002'}/auth/register`,
+                      `${process.env.NEXT_PUBLIC_API_URL}/auth/register`,
                       {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },

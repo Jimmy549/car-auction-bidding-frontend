@@ -9,7 +9,7 @@ class SocketService {
 
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
     
-    this.socket = io(process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:4002', {
+    this.socket = io(process.env.NEXT_PUBLIC_SOCKET_URL, {
       auth: { token },
       transports: ['websocket', 'polling'],
       timeout: 20000,

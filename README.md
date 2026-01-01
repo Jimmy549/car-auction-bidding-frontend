@@ -1,64 +1,71 @@
-# Car Auction Bidding Frontend
+# Car Auction Frontend
 
-A modern Next.js frontend for car auction bidding platform with real-time bidding functionality.
+A modern Next.js frontend for a car auction platform with real-time bidding capabilities.
 
 ## Features
 
-- 🚗 Browse car auctions
-- 🔐 User authentication
-- 💰 Real-time bidding
-- 📱 Responsive design
-- 🎨 Modern UI with Tailwind CSS
-- 🔔 Real-time notifications
-- 📸 Image galleries
-- 💳 Payment integration
+- User authentication and registration
+- Browse and search auctions
+- Real-time bidding interface
+- User profiles and dashboards
+- Responsive design with Tailwind CSS
+- Real-time notifications
+- Payment integration
 
 ## Tech Stack
 
-- **Framework**: Next.js 15
+- **Framework**: Next.js 14 (App Router)
 - **Styling**: Tailwind CSS
-- **UI Components**: Radix UI
+- **UI Components**: Radix UI + shadcn/ui
 - **State Management**: Redux Toolkit
 - **Real-time**: Socket.IO Client
-- **Forms**: Formik + Yup
+- **Forms**: React Hook Form
+- **Validation**: Zod
 - **Icons**: Lucide React
-
-## Quick Start
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
-```
 
 ## Environment Variables
 
 ```env
 NEXT_PUBLIC_API_URL=your_backend_api_url
-NEXT_PUBLIC_SOCKET_URL=your_backend_socket_url
+NEXT_PUBLIC_SOCKET_URL=your_socket_server_url
 ```
 
-## Pages
+## Installation
 
-- `/` - Home page with featured auctions
-- `/car-auction` - Browse all auctions
-- `/auction/[id]` - Auction details and bidding
-- `/login` - User login
-- `/register` - User registration
-- `/profile` - User profile
-- `/sell-your-car` - Create auction
+```bash
+npm install
+```
+
+## Running the app
+
+```bash
+# development
+npm run dev
+
+# build
+npm run build
+
+# start production
+npm start
+```
+
+## Project Structure
+
+```
+src/
+├── app/                 # Next.js app router pages
+├── components/          # Reusable components
+│   ├── ui/             # shadcn/ui components
+│   └── ...             # Custom components
+├── lib/                # Utility functions
+├── store/              # Redux store and slices
+├── types/              # TypeScript type definitions
+└── hooks/              # Custom React hooks
+```
 
 ## Deployment
 
-Ready for Vercel deployment with optimized Next.js configuration.
+This app is configured for deployment on Vercel. Simply connect your GitHub repository to Vercel for automatic deployments.
 
 ## License
 
