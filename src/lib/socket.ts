@@ -9,7 +9,7 @@ class SocketService {
 
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
     
-    this.socket = io(process.env.NEXT_PUBLIC_SOCKET_URL, {
+    this.socket = io(process.env.NEXT_PUBLIC_SOCKET_URL || 'https://car-auction-bidding.onrender.com', {
       auth: { token },
       transports: ['websocket', 'polling'],
       timeout: 20000,

@@ -1,4 +1,9 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://car-auction-bidding.onrender.com';
+
+// Debug log to check API URL
+if (typeof window !== 'undefined') {
+  console.log('API_BASE_URL:', API_BASE_URL);
+}
 
 class ApiService {
   private getAuthHeaders() {
@@ -10,7 +15,11 @@ class ApiService {
   }
 
   private async request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
-    const url = `${API_BASE_URL}${endpoint}`;
+    const baseUrl = API_BASE_URL || 'https://car-auction-bidding.onrender.com';
+    const url = `${baseUrl}${endpoint}`;
+    
+    console.log('Making request to:', url); // Debug log
+    
     const config = {
       headers: this.getAuthHeaders(),
       ...options,
