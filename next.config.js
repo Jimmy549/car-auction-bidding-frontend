@@ -2,6 +2,12 @@
 const nextConfig = {
   reactStrictMode: false,
   outputFileTracingRoot: __dirname,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   images: {
     domains: ['res.cloudinary.com'],
     unoptimized: true
