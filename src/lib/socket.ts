@@ -11,9 +11,15 @@ class SocketService {
     
     this.socket = io(process.env.NEXT_PUBLIC_SOCKET_URL || 'https://car-auction-bidding.onrender.com', {
       auth: { token },
-      transports: ['websocket', 'polling'],
-      timeout: 20000,
-      forceNew: true,
+      transports: ['polling', 'websocket'], // Try polling first
+      timeout: 30000,
+      reconnection: true,
+      reconnectionDelay: 1000,
+      reconnectionDelayMax: 5000,
+      maxReconnectionAttempts: 5,
+      forceNew: false,
+      upgrade: true,
+      rememberUpgrade: true
     });
 
     this.socket.on('connect', () => {

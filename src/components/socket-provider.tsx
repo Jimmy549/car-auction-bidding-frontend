@@ -17,9 +17,18 @@ export function SocketProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (isAuthenticated && !listenersSetup.current) {
-      // Connect socket when authenticated
-      socketService.connect();
-      listenersSetup.current = true;
+      // Connect socket when authenticated with retry logic
+      const connectWithRetry = () => {
+        try {
+          socketService.connect();
+          listenersSetup.current = true;
+        } catch (error) {
+          console.error('Socket connection failed, retrying in 3s:', error);
+          setTimeout(connectWithRetry, 3000);
+        }
+      };
+      
+      connectWithRetry();
 
       // Set up real-time event listeners
       const handleNewBid = (data: any) => {
