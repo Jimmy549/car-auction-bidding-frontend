@@ -10,7 +10,7 @@ import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Auction App",
-  description: "Created by Jimmy",
+  description: "Car Auction App Created by Jimmy ",
 };
 
 export default function RootLayout({
